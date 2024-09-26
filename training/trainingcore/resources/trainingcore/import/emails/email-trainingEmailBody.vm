@@ -1,0 +1,31 @@
+#macro( genHtmlBoldFont $text )
+<font color="#414a4f" size="2" face="Arial, Helvetica, sans-serif"><b>$text</b></font>
+#end
+#macro(genHtmlLinkStartTag $url)
+<a href="$url"><font color="#666666">
+#end
+#macro(genHtmlLinkEndTag)
+</font></a>
+#end
+#macro(genHtmlLink $url $textColor $bodyContent)
+<a href="$url"><font color="$textColor">$bodyContent</font></a>
+#end
+
+<!DOCTYPE html>
+<html>
+	<head>
+	</head>
+	<body bgcolor="#ffffff">
+	
+	Corulation, ${ctx.displayName},
+	
+	<div>
+	
+	You are Eligile for Premium Membership.
+	Since your Cart value is above 300, complete your order and get the premium membership benefits.
+	
+	Regards
+	Training StoreFront Website
+	</div>
+</body>
+</html>
