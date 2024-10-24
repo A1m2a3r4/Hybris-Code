@@ -12,6 +12,7 @@ import de.hybris.platform.servicelayer.cronjob.AbstractJobPerformable;
 import de.hybris.platform.servicelayer.cronjob.PerformResult;
 import de.hybris.platform.servicelayer.search.FlexibleSearchQuery;
 import de.hybris.platform.servicelayer.search.SearchResult;
+import org.training.core.model.MyTrainingProcessModel;
 import org.training.fulfilmentprocess.constants.TrainingFulfilmentProcessConstants;
 
 import java.util.List;
@@ -39,18 +40,26 @@ public class CleanUpFraudOrderJob extends AbstractJobPerformable<CronJobModel>
 	@Override
 	public PerformResult perform(final CronJobModel cronJob)
 	{
-		final String processDefinitionName = TrainingFulfilmentProcessConstants.ORDER_PROCESS_NAME;
-		final String processCurrentAction = "waitForCleanUp";
-		final List<BusinessProcessModel> processes = getAllProcessByDefinitionAndCurrentAction(processDefinitionName,
-				processCurrentAction);
+		// final String processDefinitionName = TrainingFulfilmentProcessConstants.ORDER_PROCESS_NAME;
+		// final String processCurrentAction = "waitForCleanUp";
+		// final List<BusinessProcessModel> processes = getAllProcessByDefinitionAndCurrentAction(processDefinitionName,
+		// 		processCurrentAction);
 
-		final String eventNameSuffix = "_CleanUpEvent";
-		for (final BusinessProcessModel bpm : processes)
-		{
-			//${process.code}_CleanUpEvent
-			final String eventName = bpm.getCode() + eventNameSuffix;
-			businessProcessService.triggerEvent(eventName);
-		}
+		// final String eventNameSuffix = "_CleanUpEvent";
+		// for (final BusinessProcessModel bpm : processes)
+		// {
+		// 	//${process.code}_CleanUpEvent
+		// 	final String eventName = bpm.getCode() + eventNameSuffix;
+		// 	businessProcessService.triggerEvent(eventName);
+		// }
+		//Need to give system.millisecond, So that millisecond added with the id name makes a unique name, Which is neede everytime
+		MyTrainingProcessModel myTrainingProcessModel = getBusinessProcessService().createProcess("myTrainingProcess-" + System.currentTimeMillis(),
+																"myTrainingBusinessProcess");
+		myTrainingProcessModel.setAttribute1("A");
+		myTrainingProcessModel.setAttribute2("A");
+		myTrainingProcessModel.setAttribute3("A");
+		modelService.save(myTrainingProcessModel);
+		getBusinessProcessService().startProcess(myTrainingProcessModel);
 		return new PerformResult(CronJobResult.SUCCESS, CronJobStatus.FINISHED);
 	}
 
