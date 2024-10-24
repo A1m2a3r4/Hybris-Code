@@ -104,19 +104,79 @@
             </itemtype>
         </typegroup>
         
-        <typegroup name="TrainingEmailProcess">
-            <itemtype code="TrainingEmailProcess" extends="StorefrontCustomerProcess"
-                      autocreate="true" generate="true"
-                      jaloclass="org.training.core.jalo.TrainingEmailProcess">
+        <typegroup name="Training">
+            <itemtype code="TrainingEmailProcess" extends="StoreFrontCustomerProcess"
+                      autocreate="true" generate="true">
                 <attributes>
-                    <attribute qualifier="cart" type="AbstractOrder">
-                        <description>elegibilty For Premium Membership</description>
+                    <attribute qualifier="cart" type="AbstractOrder" >
+                        <description>Eligibility for premium membership.</description>
                         <modifiers/>
                         <persistence type="property"/>
                     </attribute>
                 </attributes>
             </itemtype>
-        </typegroup>
+
+            <itemtype code="trainingOldCartRemovalJob" extends="CronJob"
+                      autocreate="true" generate="true">
+                <attributes>
+                    <attribute qualifier="hours" type="java.lang.Integer" >
+                        <modifiers/>
+                        <persistence type="property"/>
+                    </attribute>
+                </attributes>
+            </itemtype>
+
+             <itemtype code="TrainingVideoComponent" extends="SimpleCMSComponent"
+                      jaloclass="org.training.core.jalo.components.TrainingVideoComponent"
+                      abstract="false">
+                <attributes>
+                    <attribute qualifier="width" type="java.lang.Integer" >
+                        <modifiers/>
+                        <persistence type="property"/>
+                    </attribute>
+                    <attribute qualifier="height" type="java.lang.Integer" >
+                        <modifiers/>
+                        <persistence type="property"/>
+                    </attribute>
+                    <attribute qualifier="videoId" type="java.lang.String" >
+                        <modifiers/>
+                        <persistence type="property"/>
+                    </attribute>
+                    <attribute qualifier="autoPlay" type="java.lang.Boolean" >
+                        <modifiers optional="false" />
+                        <defaultvalue>false</defaultvalue>
+                        <persistence type="property"/>
+                    </attribute>
+                    <attribute qualifier="showControls" type="java.lang.Boolean" >
+                        <modifiers optional="false" />
+                        <defaultvalue>false</defaultvalue>
+                        <persistence type="property"/>
+                    </attribute>
+                </attributes>
+            </itemtype>
+
+             <itemtype code="MyTrainingProcess" extends="BusinessProcess"
+                      autocreate="true" generate="true">
+<!--                      jaloclass="org.training.core.jalo.ElectronicsColorVariantProduct"-->
+                <attributes>
+                    <attribute qualifier="attribute1" type="java.lang.String">
+                        <description>Attribute 1</description>
+                        <modifiers/>
+                        <persistence type="property"/>
+                    </attribute>
+                    <attribute qualifier="attribute2" type="java.lang.String">
+                        <description>Attribute 2</description>
+                        <modifiers/>
+                        <persistence type="property"/>
+                    </attribute>
+                    <attribute qualifier="attribute3" type="java.lang.String">
+                        <description>Attribute 3</description>
+                        <modifiers/>
+                        <persistence type="property"/>
+                    </attribute>
+                </attributes>
+            </itemtype>
+         </typegroup>
         
         
 
