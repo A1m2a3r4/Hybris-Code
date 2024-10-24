@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<config xmlns="http://www.hybris.com/cockpit/config"
+		xmlns:editorArea="http://www.hybris.com/cockpitng/component/editorArea"
+		xmlns:list-view="http://www.hybris.com/cockpitng/component/listView"
+		xmlns:advanced-search="http://www.hybris.com/cockpitng/config/advancedsearch"
+		xmlns:explorer-tree="http://www.hybris.com/cockpitng/config/explorertree"
+>
+
+	<!-- trainingbackoffice UI configuration should be provided here -->
+
+	<!--<context component="component-code" module="trainingbackoffice">-->
+	<!--Please check documentation for code snippets for specific components-->
+	<!--</context>-->
+
+	<!-- Adding New Tab to Customer -->
+	<context merge-by="type"  type="Customer" component="editor-area">
+		<editorArea:editorArea>
+			<editorArea:tab name="hmc.tab.customer.personal"
+							position="3">
+				<editorArea:section name="hmc.section.customer.attributes">
+					<editorArea:attribute qualifier="contactEmail" />
+					<editorArea:attribute qualifier="originalUid" />
+				</editorArea:section>
+			</editorArea:tab>
+		</editorArea:editorArea>
+	</context>
+
+	<context merge-by="type" type="Product" component="editor-area">
+		module = "Platformbackoffice"
+		<editorArea:editorArea>
+			<editorArea:tab name="hmc.tab.product.extendedAttributes"
+							position="26">
+				<editorArea:section name="hmc.section.product.ids">
+					<editorArea:attribute qualifier="numberOfReviews" />
+					<editorArea:attribute qualifier="averageRating" />
+				</editorArea:section>
+				<editorArea:section name="hmc.section.product.remark">
+				<editorArea:attribute qualifier="ean" />
+				</editorArea:section>
+			</editorArea:tab>
+		</editorArea:editorArea>
+	</context>
+
+
+</config>

@@ -1,0 +1,13 @@
+@charset "utf-8";
+@import "./support/trainingbackofficewidget-variables.scss";
+
+.yw-labelstyle
+{
+	color: $trainingbackoffice-label-text-color;
+}
+
+.trainingbackoffice-container {
+	background: $trainingbackoffice-container-background;
+	font-family: $trainingbackoffice-container-font-family;
+	font-size: $trainingbackoffice-container-font-size;
+}

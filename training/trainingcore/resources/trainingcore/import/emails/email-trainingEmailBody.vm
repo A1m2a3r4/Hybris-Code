@@ -1,0 +1,29 @@
+#macro( genHtmlBoldFont $text )
+<font color="#414a4f" size="2" face="Arial, Helvetica, sans-serif"><b>$text</b></font>
+#end
+#macro(genHtmlLinkStartTag $url)
+<a href="$url"><font color="#666666">
+#end
+#macro(genHtmlLinkEndTag)
+</font></a>
+#end
+#macro(genHtmlLink $url $textColor $bodyContent)
+<a href="$url"><font color="$textColor">$bodyContent</font></a>
+#end
+
+<!DOCTYPE html>
+<html>
+	<head>
+	</head>
+	<body bgcolor="#ffffff">
+	Congrulations, ${ctx.displayName},
+	<div>
+	you are eligible for premium membership.
+	Since your cart value is above 300, complate your order and get the premium membership benifits.
+
+	regards,
+	Training Storefront website
+	</div>
+
+</body>
+</html>
