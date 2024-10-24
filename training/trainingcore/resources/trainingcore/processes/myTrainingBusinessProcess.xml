@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+ Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
+-->
+<process xmlns="http://www.hybris.de/xsd/processdefinition" start="startingStepOfMyBusinessProcess" name="myTrainingBusinessProcess"
+         processClass="org.training.core.model.MyTrainingProcessModel" onError="error">
+
+    <action id="startingStepOfMyBusinessProcess" bean="startingStepOfMyBusinessProcess">
+        <transition name="OK" to="secondAction"/>
+        <transition name="NOK" to="error"/>
+    </action>
+
+    <action id="secondAction" bean="secondAction">
+        <transition name="OK" to="thirdAction"/>
+        <transition name="NOK" to="fourthAction"/>
+    </action>
+
+    <action id="thirdAction" bean="thirdAction">
+        <transition name="OK" to="success"/>
+        <transition name="NOK" to="error"/>
+    </action>
+
+    <action id="fourthAction" bean="fourthAction">
+        <transition name="OK" to="success"/>
+        <transition name="NOK" to="failed"/>
+    </action>
+
+    <end id="error" state="ERROR">Something went wrong.</end>
+    <end id="failed" state="FAILED">Failed Business Process</end>
+    <end id="success" state="SUCCEEDED">Business Process Execution Process</end>
+
+</process>
