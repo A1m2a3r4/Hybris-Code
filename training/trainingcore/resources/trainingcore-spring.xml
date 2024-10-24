@@ -556,5 +556,18 @@
 	<property name="businessProcessService" ref="businessProcessService"/>
 	<property name="processCodeGenerator" ref="processCodeGenerator"/>
 	</bean>
+
+	<bean id="myTrainingBusinessProcess"
+	class="de.hybris.platform.processengine.definition.ProcessDefinitionResource" >
+	<property name="resource" value="classpath:/trainingcore/processes/myTrainingBusinessProcess.xml"/>
+	</bean>
+	<!--	trainingcore/processes/myTrainingBusinessProcess.xml-->
+
+	<bean id="startingStepOfMyBusinessProcess" class="org.training.core.actions.quote.StartingStepOfMyBusinessProcess" parent="abstractAction" />
+	<bean id="secondAction" class="org.training.core.actions.quote.SecondAction" parent="abstractAction" />
+	<bean id="thirdAction" class="org.training.core.actions.quote.ThirdAction" parent="abstractAction" />
+	<bean id="fourthAction" class="org.training.core.actions.quote.FourthAction" parent="abstractAction" />
+
+
 	
 </beans>
